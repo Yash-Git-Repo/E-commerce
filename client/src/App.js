@@ -6,7 +6,6 @@ import ProductDetail from './pages/productDetail/ProductDetails'
 import PageNotFound from './pages/pageNotFound/PageNotFound'
 import Footer from './components/footer/Footer'
 import Naavbar from './components/navbar/Navbar'
-import Product from './components/product/Product'
 import Category from './components/category/Category'
 
 function App() {
