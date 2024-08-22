@@ -1,23 +1,23 @@
-.categories{
-    width: 31%;
+.categories {
+    width: 32%;
     aspect-ratio: 16/9;
-    background-image: url(../../assets/poster.jpeg);
-    background-repeat: no-repeat;
+    background-image: url('../../assets/poster.jpeg');
     background-size: cover;
-    background-position:center;
+    background-repeat: no-repeat;
+    background-position: center;
     cursor: pointer;
 
-    .content{
+    .content {
         height: 100%;
-        background-color: rgba(0,0,0,0.4);
+        background-color: rgba($color: #000000, $alpha: 0.4);
         transition: 0.2s ease;
 
-        .heading{
+        .heading {
             color: white;
         }
 
-        &:hover{
-            background-color: rgba(0,0,0,0.5);
+        &:hover {
+            background-color: rgba($color: #000000, $alpha: 0.5);
         }
     }
 }

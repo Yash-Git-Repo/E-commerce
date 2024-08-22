@@ -1,24 +1,31 @@
 import React, { useEffect, useState } from 'react'
 import './Category.scss'
-import Product from '../product/Product'
+import Product from '../../components/product/Product'
 import { useNavigate, useParams } from 'react-router-dom'
+import { axiosClient } from '../../utils/axiosClient'
 
 
-function Category() {
-
+function Category(category) {
     const navigate = useNavigate()
     const params = useParams()
     const [categoryId, setCategoryId] = useState()
 
+    // async function fetchData() {
+
+    //     const categoryResponse = axiosClient.get(`categories/?populate=*)
+    //     log
+        
+    // }
+
     const categoryList = [{
-        id: 'comics',
-        value: 'Comics'
+        id: '3',
+        value: 'Anime'
     }, {
-        id: 'gaming',
+        id: '1',
         value: 'Gaming'
     }, {
-        id: 'sports',
-        value: 'Sports'
+        id: '2',
+        value: 'Marvels'
     }]
 
     useEffect(() => {

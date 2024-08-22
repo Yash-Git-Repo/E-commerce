@@ -19,7 +19,7 @@ function Navbar() {
               <Link className='link' to='/products?category=comic' >Gaming</Link>
             </li>
             <li className='hover-link'>
-              <Link className='link' to='/products?category=comic' >Sports</Link>
+              <Link className='link' to='/products?category=comic' >Marvels</Link>
             </li>
           </ul>
         </div>
