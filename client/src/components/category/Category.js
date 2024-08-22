@@ -14,8 +14,8 @@ function Category() {
         id: 'comics',
         value: 'Comics'
     }, {
-        id: 'tv-shows',
-        value: 'TV Shows'
+        id: 'gaming',
+        value: 'Gaming'
     }, {
         id: 'sports',
         value: 'Sports'

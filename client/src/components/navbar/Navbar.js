@@ -16,7 +16,7 @@ function Navbar() {
               <Link className='link' to='/products?category=comic' >Comic</Link>
             </li>
             <li className='hover-link'>
-              <Link className='link' to='/products?category=comic' >TV Shows</Link>
+              <Link className='link' to='/products?category=comic' >Gaming</Link>
             </li>
             <li className='hover-link'>
               <Link className='link' to='/products?category=comic' >Sports</Link>
