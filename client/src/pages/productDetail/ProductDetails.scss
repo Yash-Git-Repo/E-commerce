@@ -55,8 +55,12 @@
           }
         }
 
-        .add-to-cart {
+        .cart-btns {
           margin-top: 30px;
+          display: flex;
+          width: 150px;
+          flex-direction: column;
+          gap: 10px;
         }
       }
 

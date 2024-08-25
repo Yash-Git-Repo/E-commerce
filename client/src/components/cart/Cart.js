@@ -1,9 +1,18 @@
 import React from "react";
 import "./Cart.scss";
 import { AiOutlineClose } from "react-icons/ai";
+import { BsCartX } from "react-icons/bs";
 import CartItem from "../cartItem/CartITem";
+import { useSelector } from "react-redux";
 
 function Cart({ onClose }) {
+  const cart = useSelector((state) => state.cartReducer.cart);
+  let totalAmount = 0;
+  cart.forEach((item) => (totalAmount += item.quantity * item.price));
+
+  const isCartEmpty = cart?.length === 0;
+  console.log(isCartEmpty);
+
   return (
     <div className="cart">
       <div className="overlay" onClick={onClose}></div>
@@ -15,16 +24,26 @@ function Cart({ onClose }) {
             Close
           </div>
         </div>
-        <CartItem />
-        <CartItem />
-        <CartItem />
-        <div className="checkout-info">
-          <div className="total-amount">
-            <h3>Total</h3>
-            <h3 className="total-value">₹ 5459</h3>
+        {cart?.map((item) => (
+          <CartItem cart={item} />
+        ))}
+        {isCartEmpty && (
+          <div className="empty-cart-info">
+            <div className="icon">
+              <BsCartX />
+            </div>
+            <h4>Cart is Empty</h4>
           </div>
-          <div className="checkout btn-primary">Checkout Now</div>
-        </div>
+        )}
+        {!isCartEmpty && (
+          <div className="checkout-info">
+            <div className="total-amount">
+              <h3>Total</h3>
+              <h3 className="total-value">₹ {totalAmount}</h3>
+            </div>
+            <div className="checkout btn-primary">Checkout Now</div>
+          </div>
+        )}
       </div>
     </div>
   );
