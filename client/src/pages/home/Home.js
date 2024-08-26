@@ -1,14 +1,32 @@
-import React from 'react'
-import './Home.scss'
-import Hero from '../../components/hero/Hero'
-import Categories from '../categories/Categories'
-import Product from '../../components/product/Product'
+import React, { useEffect, useState } from "react";
+import "./Home.scss";
+import Hero from "../../components/hero/Hero";
+import Product from "../../components/product/Product";
+import {axiosClient} from "../../utils/axiosClient";
+import Categories from "../../components/collection/Collection";
+import Category from '../category/Category'
+import { useSelector } from "react-redux";
 
 function Home() {
+  const [topProducts, setTopProducts] = useState(null);
+  const categories = useSelector((state => state.categoryReducer.categories))
+
+
+  async function fetchData() {
+    const topProductsResponse = await axiosClient.get(
+      "/products?filters[isTopPick][$eq]=true&populate=image"
+    );
+    setTopProducts(topProductsResponse.data.data)
+  }
+
+  useEffect(() =>{
+    fetchData()
+  },[])
+
   return (
     <div>
       <Hero />
-      <section className='collection container'>
+      <section className="collection container">
         <div className="info">
           <h2 className="heading">Shop By Categories</h2>
           <p className="sub-heading">
@@ -16,12 +34,10 @@ function Home() {
           </p>
         </div>
         <div className="categories-content">
-          <Categories />
-          <Categories />
-          <Categories />
+          {categories?.map((item => <Categories category ={item} key={item.id}/>))}
         </div>
       </section>
-      <section className='collection container'>
+      <section className="collection container">
         <div className="info">
           <h2 className="heading">Our Top Picks !!</h2>
           <p className="sub-heading">
@@ -29,15 +45,11 @@ function Home() {
           </p>
         </div>
         <div className="product-content">
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
+        {topProducts?.map((item => <Product product ={item} key={item.id}/>))}
         </div>
       </section>
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;

@@ -3,24 +3,26 @@ import { Link } from 'react-router-dom'
 import { BsCart2 } from "react-icons/bs";
 import Cart from '../../components/cart/Cart'
 import './Navbar.scss'
+import { useSelector } from 'react-redux';
 
 function Navbar() {
   const [openCart , setOpenCart] = useState()
+  const categories = useSelector((state => state.categoryReducer.categories))
+  const cart = useSelector(state => state.cartReducer.cart);
+    let totalItems = 0;
+    cart.forEach(item => totalItems += item.quantity);
+  
   return (
     <>
     <nav className="Navbar">
       <div className="container nav-container">
         <div className="nav-left">
           <ul className='link-group'>
-            <li className='hover-link'>
-              <Link className='link' to='/products?category=comic' >Comic</Link>
+           { categories.map((item) =>(
+            <li className='hover-link' key={item?.id}>
+              <Link className='link' to={`/category/${item?.attributes?.key}`} >{item?.attributes?.title}</Link>
             </li>
-            <li className='hover-link'>
-              <Link className='link' to='/products?category=comic' >TV Shows</Link>
-            </li>
-            <li className='hover-link'>
-              <Link className='link' to='/products?category=comic' >Sports</Link>
-            </li>
+           ))}
           </ul>
         </div>
         <div className="nav-center">
@@ -29,7 +31,7 @@ function Navbar() {
         <div className="nav-right">
           <div className="nav-cart hover-link" onClick={() => setOpenCart(!openCart)}>
             <BsCart2 className='icon' />
-            <span className='cart-count center'>99</span>
+            {totalItems > 0 && <span className="cart-count center">{totalItems}</span>}
           </div>
         </div>
       </div>

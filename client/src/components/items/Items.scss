@@ -1,0 +1,37 @@
+.item-container {
+  .items-box {
+    flex: 4;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .quantity-selector {
+    border: 1px solid var(--secondary-text-color);
+    width: fit-content;
+
+    .btn {
+      padding: 8px 16px;
+      background-color: #eee;
+      color: var(--primary-text-color);
+      display: inline-block;
+      cursor: pointer;
+      font-size: 1.2rem;
+      user-select: none;
+      &:hover {
+        background-color: #ddd;
+      }
+      &:active {
+        background-color: #eee;
+      }
+    }
+
+    .quantity {
+      text-align: center;
+      width: 60px;
+      display: inline-block;
+      font-weight: 700;
+    }
+  }
+}
