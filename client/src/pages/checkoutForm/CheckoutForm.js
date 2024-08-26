@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { axiosClientNoAuth } from "../../utils/axiosClient";
 import "./CheckoutForm.scss";
+import { useDispatch } from "react-redux";
+import { clearCart } from "../../redux/slices/cartSlice";
 
 function CheckoutForm({ cart, totalAmount, onClose }) {
+  const dispatch = useDispatch();
   const [customerDetails, setCustomerDetails] = useState({
     name: "",
     email: "",
@@ -56,6 +59,7 @@ function CheckoutForm({ cart, totalAmount, onClose }) {
 
             if (verifyResponse.data.success) {
               alert("Payment successful!");
+              dispatch(clearCart(cart));
               onClose(); // Close the checkout form
             } else {
               alert("Payment verification failed.");

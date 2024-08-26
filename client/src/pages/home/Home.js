@@ -4,7 +4,6 @@ import Hero from "../../components/hero/Hero";
 import Product from "../../components/product/Product";
 import {axiosClient} from "../../utils/axiosClient";
 import Categories from "../../components/collection/Collection";
-import Category from '../category/Category'
 import { useSelector } from "react-redux";
 
 function Home() {

@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Cart.scss";
 import { AiOutlineClose } from "react-icons/ai";
 import { BsCartX } from "react-icons/bs";
 import CartItem from "../cartItem/CartITem";
 import { useSelector } from "react-redux";
-import { axiosClientNoAuth } from "../../utils/axiosClient";
 import CheckoutForm from "../../pages/checkoutForm/CheckoutForm";
 
 function Cart({ onClose }) {
